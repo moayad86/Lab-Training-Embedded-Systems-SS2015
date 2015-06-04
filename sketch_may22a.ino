@@ -21,7 +21,7 @@ void setup() {
   pinMode(OutputLedPin_9, OUTPUT);
   pinMode(OutputLedPin_10, OUTPUT);
   pinMode(OutputLedPin_11, OUTPUT);
-  
+
   pinMode(inputDetectPin_5, INPUT);
   pinMode(inputDetectPin_6, INPUT);
   pinMode(inputDetectPin_7, INPUT);
@@ -34,7 +34,7 @@ void loop() {
   digitalWrite(OutputLedPin_9, LOW);
   digitalWrite(OutputLedPin_10, LOW);
   digitalWrite(OutputLedPin_11, LOW);
-  
+
   int TotalActive = 0; //To distinguish between NPN and PNP
 
   //Testing first pin
@@ -51,12 +51,12 @@ void loop() {
     digitalWrite(OutputLedPin_9, HIGH);
     digitalWrite(OutputLedPin_10, HIGH);
   }
-  
+
   //Testing second pin
   digitalWrite(OutputControlPin_2, HIGH);
   digitalWrite(OutputControlPin_3, LOW);
   digitalWrite(OutputControlPin_4, HIGH);
-    
+
   if (digitalRead(inputDetectPin_6) == HIGH)
   {
     if (TotalActive == 0)
@@ -66,15 +66,15 @@ void loop() {
       digitalWrite(OutputLedPin_9, LOW);
       digitalWrite(OutputLedPin_10, HIGH);
     }
-    
+
     TotalActive += 1;
   }
-  
+
   //Testing third pin
   digitalWrite(OutputControlPin_2, HIGH);
   digitalWrite(OutputControlPin_3, HIGH);
   digitalWrite(OutputControlPin_4, LOW);
-      
+
   if (digitalRead(inputDetectPin_7) == HIGH)
   {
     if (TotalActive == 0)
@@ -84,10 +84,10 @@ void loop() {
       digitalWrite(OutputLedPin_9, HIGH);
       digitalWrite(OutputLedPin_10, LOW);
     }
-    
+
     TotalActive += 1;
   }
-  
+
   //If TotalActive is more than one, meaning the transistor activated two times, then it's NPN, otherwise it's PNP
   if (TotalActive > 1)
   {
